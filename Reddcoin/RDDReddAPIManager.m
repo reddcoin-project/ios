@@ -88,6 +88,23 @@
     [self.operationQueue addOperation:requestOperation];
 }
 
+- (void)getUserListSuccess:(void (^)(NSArray *json))success
+                   failure:(void (^)(NSError *error))failure
+{
+    NSString *urlString = [self prepareGetURLStringWithPath:@"GetUserList" username:nil];
+    NSMutableURLRequest *request = [self.requestSerializer requestWithMethod:@"GET" URLString:urlString parameters:nil error:nil];
+    AFHTTPRequestOperation *requestOperation = [self HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (success) {
+            success(responseObject);
+        }
+    } failure:^(__unused AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    [self.operationQueue addOperation:requestOperation];
+}
+
 - (void)sendFromUsername:(NSString *)username
                toAddress:(NSString *)address
                   amount:(NSNumber *)amount

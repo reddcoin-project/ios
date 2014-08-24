@@ -16,6 +16,8 @@
 - (void)getUserBalanceDetailForUsername:(NSString *)username
                                 success:(void (^)(NSDictionary *json))success
                                 failure:(void (^)(NSError *error))failure;
+- (void)getUserListSuccess:(void (^)(NSArray *json))success
+                   failure:(void (^)(NSError *error))failure;
 - (void)sendFromUsername:(NSString *)username
                toAddress:(NSString *)address
                   amount:(NSNumber *)amount
