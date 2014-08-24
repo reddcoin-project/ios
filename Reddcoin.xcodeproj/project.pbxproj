@@ -10,10 +10,15 @@
 		641FEC4E7C544C2CB4CF3D48 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F25927EF7FB1474F8AE3E1C2 /* libPods.a */; };
 		660F2F1C19A6644100492E7F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 660F2F1B19A6644100492E7F /* main.m */; };
 		660F2F1F19A6644100492E7F /* RDDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 660F2F1E19A6644100492E7F /* RDDAppDelegate.m */; };
-		660F2F2219A6644100492E7F /* RDDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 660F2F2119A6644100492E7F /* RDDViewController.m */; };
 		660F2F2519A6644100492E7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 660F2F2319A6644100492E7F /* Main.storyboard */; };
 		660F2F2719A6644100492E7F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 660F2F2619A6644100492E7F /* Images.xcassets */; };
 		662068A319A6CFA500E7DEA8 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 662068A219A6CFA500E7DEA8 /* Keys.plist */; };
+		66B3429319A7D71000BA3D1E /* RDDAuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B3429219A7D71000BA3D1E /* RDDAuthenticationViewController.m */; };
+		66B3429619A7E2C400BA3D1E /* RDDDashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B3429519A7E2C400BA3D1E /* RDDDashboardViewController.m */; };
+		66B3429919A7E2DD00BA3D1E /* RDDTransactionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B3429819A7E2DD00BA3D1E /* RDDTransactionsViewController.m */; };
+		66CF7CF919AA80B200E90DE3 /* RDDAddressesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66CF7CF819AA80B200E90DE3 /* RDDAddressesViewController.m */; };
+		66CF7CFC19AA813100E90DE3 /* RDDSendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66CF7CFB19AA813100E90DE3 /* RDDSendViewController.m */; };
+		66CF7CFF19AA814300E90DE3 /* RDDReceiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66CF7CFE19AA814300E90DE3 /* RDDReceiveViewController.m */; };
 		66ED50BD19A66D8C0013DD71 /* RDDReddAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 66ED50BC19A66D8C0013DD71 /* RDDReddAPIManager.m */; };
 		66ED50C119A6780D0013DD71 /* RDDConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 66ED50C019A6780D0013DD71 /* RDDConstants.m */; };
 		EC8A5CDA9B1B435E97B2DC97 /* libPods-Reddcoin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8624A0E9A024CF4B4903F2A /* libPods-Reddcoin.a */; };
@@ -25,11 +30,21 @@
 		660F2F1B19A6644100492E7F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		660F2F1D19A6644100492E7F /* RDDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDDAppDelegate.h; sourceTree = "<group>"; };
 		660F2F1E19A6644100492E7F /* RDDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RDDAppDelegate.m; sourceTree = "<group>"; };
-		660F2F2019A6644100492E7F /* RDDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDDViewController.h; sourceTree = "<group>"; };
-		660F2F2119A6644100492E7F /* RDDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RDDViewController.m; sourceTree = "<group>"; };
 		660F2F2419A6644100492E7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		660F2F2619A6644100492E7F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		662068A219A6CFA500E7DEA8 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		66B3429119A7D71000BA3D1E /* RDDAuthenticationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDAuthenticationViewController.h; sourceTree = "<group>"; };
+		66B3429219A7D71000BA3D1E /* RDDAuthenticationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDAuthenticationViewController.m; sourceTree = "<group>"; };
+		66B3429419A7E2C400BA3D1E /* RDDDashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDDashboardViewController.h; sourceTree = "<group>"; };
+		66B3429519A7E2C400BA3D1E /* RDDDashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDDashboardViewController.m; sourceTree = "<group>"; };
+		66B3429719A7E2DD00BA3D1E /* RDDTransactionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDTransactionsViewController.h; sourceTree = "<group>"; };
+		66B3429819A7E2DD00BA3D1E /* RDDTransactionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDTransactionsViewController.m; sourceTree = "<group>"; };
+		66CF7CF719AA80B200E90DE3 /* RDDAddressesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDAddressesViewController.h; sourceTree = "<group>"; };
+		66CF7CF819AA80B200E90DE3 /* RDDAddressesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDAddressesViewController.m; sourceTree = "<group>"; };
+		66CF7CFA19AA813100E90DE3 /* RDDSendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDSendViewController.h; sourceTree = "<group>"; };
+		66CF7CFB19AA813100E90DE3 /* RDDSendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDSendViewController.m; sourceTree = "<group>"; };
+		66CF7CFD19AA814300E90DE3 /* RDDReceiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDReceiveViewController.h; sourceTree = "<group>"; };
+		66CF7CFE19AA814300E90DE3 /* RDDReceiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDReceiveViewController.m; sourceTree = "<group>"; };
 		66ED50BB19A66D8C0013DD71 /* RDDReddAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDReddAPIManager.h; sourceTree = "<group>"; };
 		66ED50BC19A66D8C0013DD71 /* RDDReddAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDReddAPIManager.m; sourceTree = "<group>"; };
 		66ED50BF19A6780D0013DD71 /* RDDConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDConstants.h; sourceTree = "<group>"; };
@@ -76,14 +91,24 @@
 			children = (
 				660F2F2619A6644100492E7F /* Images.xcassets */,
 				660F2F2319A6644100492E7F /* Main.storyboard */,
+				66CF7CF719AA80B200E90DE3 /* RDDAddressesViewController.h */,
+				66CF7CF819AA80B200E90DE3 /* RDDAddressesViewController.m */,
 				660F2F1D19A6644100492E7F /* RDDAppDelegate.h */,
 				660F2F1E19A6644100492E7F /* RDDAppDelegate.m */,
+				66B3429119A7D71000BA3D1E /* RDDAuthenticationViewController.h */,
+				66B3429219A7D71000BA3D1E /* RDDAuthenticationViewController.m */,
 				66ED50BF19A6780D0013DD71 /* RDDConstants.h */,
 				66ED50C019A6780D0013DD71 /* RDDConstants.m */,
+				66B3429419A7E2C400BA3D1E /* RDDDashboardViewController.h */,
+				66B3429519A7E2C400BA3D1E /* RDDDashboardViewController.m */,
+				66CF7CFD19AA814300E90DE3 /* RDDReceiveViewController.h */,
+				66CF7CFE19AA814300E90DE3 /* RDDReceiveViewController.m */,
 				66ED50BB19A66D8C0013DD71 /* RDDReddAPIManager.h */,
 				66ED50BC19A66D8C0013DD71 /* RDDReddAPIManager.m */,
-				660F2F2019A6644100492E7F /* RDDViewController.h */,
-				660F2F2119A6644100492E7F /* RDDViewController.m */,
+				66CF7CFA19AA813100E90DE3 /* RDDSendViewController.h */,
+				66CF7CFB19AA813100E90DE3 /* RDDSendViewController.m */,
+				66B3429719A7E2DD00BA3D1E /* RDDTransactionsViewController.h */,
+				66B3429819A7E2DD00BA3D1E /* RDDTransactionsViewController.m */,
 				660F2F1919A6644100492E7F /* Supporting Files */,
 			);
 			path = Reddcoin;
@@ -214,11 +239,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66B3429619A7E2C400BA3D1E /* RDDDashboardViewController.m in Sources */,
 				66ED50BD19A66D8C0013DD71 /* RDDReddAPIManager.m in Sources */,
-				660F2F2219A6644100492E7F /* RDDViewController.m in Sources */,
 				66ED50C119A6780D0013DD71 /* RDDConstants.m in Sources */,
+				66CF7CFF19AA814300E90DE3 /* RDDReceiveViewController.m in Sources */,
+				66B3429919A7E2DD00BA3D1E /* RDDTransactionsViewController.m in Sources */,
 				660F2F1F19A6644100492E7F /* RDDAppDelegate.m in Sources */,
 				660F2F1C19A6644100492E7F /* main.m in Sources */,
+				66CF7CFC19AA813100E90DE3 /* RDDSendViewController.m in Sources */,
+				66CF7CF919AA80B200E90DE3 /* RDDAddressesViewController.m in Sources */,
+				66B3429319A7D71000BA3D1E /* RDDAuthenticationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

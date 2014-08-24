@@ -10,4 +10,7 @@
 
 @interface RDDConstants : NSObject
 extern NSString * const kReddAPIBaseURL;
+extern NSString * const kDefaultsReddAPIGETKey;
+extern NSString * const kDefaultsReddAPIPOSTKey;
+extern NSString * const kDefaultsReddAPIUsername;
 @end

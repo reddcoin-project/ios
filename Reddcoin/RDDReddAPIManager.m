@@ -47,6 +47,11 @@
     return [url absoluteString];
 }
 
+- (NSString *)preparePostURLStringWithPath:(NSString *)path
+{
+    return [[self.baseURL URLByAppendingPathComponent:path] absoluteString];
+}
+
 - (void)getUserInfoForUsername:(NSString *)username
                        success:(void (^)(NSDictionary *json))success
                        failure:(void (^)(NSError *error))failure
@@ -80,6 +85,58 @@
             failure(error);
         }
     }];
+    [self.operationQueue addOperation:requestOperation];
+}
+
+- (void)sendFromUsername:(NSString *)username
+               toAddress:(NSString *)address
+                  amount:(NSNumber *)amount
+                 success:(void (^)(NSDictionary *json))success
+                 failure:(void (^)(NSError *error))failure
+{
+    self.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    NSString *urlString = [self preparePostURLStringWithPath:@"SendToAddress"];
+    NSDictionary *params = @{@"APIKey" : self.postKey, @"UsernameFrom" : username, @"AddressTo" : address, @"Amount" : amount};
+    NSMutableURLRequest *request = [self.requestSerializer requestWithMethod:@"POST" URLString:urlString parameters:params error:nil];
+    AFHTTPRequestOperation *requestOperation = [self HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (success) {
+            success(responseObject);
+        }
+    } failure:^(__unused AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    /// TODO: HACK around invalid ReddAPI response (returns only "Success" string)
+    requestOperation.responseSerializer = [AFHTTPResponseSerializer serializer];
+    /// TODO: HACK
+    [self.operationQueue addOperation:requestOperation];
+}
+
+- (void)sendFromUsername:(NSString *)usernameFrom
+              toUsername:(NSString *)usernameTo
+                  amount:(NSNumber *)amount
+                 success:(void (^)(NSDictionary *json))success
+                 failure:(void (^)(NSError *error))failure
+{
+    self.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    NSString *urlString = [self preparePostURLStringWithPath:@"MoveToUser"];
+    NSDictionary *params = @{@"APIKey" : self.postKey, @"UsernameFrom" : usernameFrom, @"UsernameTo" : usernameTo, @"Amount" : amount};
+    NSMutableURLRequest *request = [self.requestSerializer requestWithMethod:@"POST" URLString:urlString parameters:params error:nil];
+    AFHTTPRequestOperation *requestOperation = [self HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (success) {
+            success(responseObject);
+        }
+    } failure:^(__unused AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    /// TODO: HACK around invalid ReddAPI response (returns only "Success" string)
+    requestOperation.responseSerializer = [AFHTTPResponseSerializer serializer];
+    /// TODO: HACK
     [self.operationQueue addOperation:requestOperation];
 }
 
