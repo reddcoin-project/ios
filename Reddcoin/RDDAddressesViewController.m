@@ -9,11 +9,9 @@
 #import "RDDAddressesViewController.h"
 
 #import "RDDConstants.h"
-#import "RDDReddAPIManager.h"
 
 @interface RDDAddressesViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) RDDReddAPIManager *reddApi;
 @property (nonatomic, strong) NSArray *users;
 @end
 
@@ -21,41 +19,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self configureReddAPI];
-    [self loadUserList];
+    [self loadAddressData];
 }
 
-- (void)configureReddAPI
+- (void)loadAddressData
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.reddApi = [[RDDReddAPIManager alloc] initWithGetKey:[defaults stringForKey:kDefaultsReddAPIGETKey]
-                                                     postKey:[defaults stringForKey:kDefaultsReddAPIPOSTKey]];
-}
 
-- (void)loadUserList
-{
-    [self.reddApi getUserListSuccess:^(NSArray *json) {
-        [self parseUserListJSON:json];
-    } failure:^(NSError *error) {
-        [self showGenericAlert];
-    }];
-}
-
-- (void)parseUserListJSON:(NSArray *)json
-{
-    //    self.users = json[@"GetUserListResult"];
-    self.users = json;
-    [self.tableView reloadData];
-}
-
-- (void)showGenericAlert
-{
-    [[[UIAlertView alloc] initWithTitle:@"Generic Error"
-                                message:@"Something went wrong."
-                               delegate:nil
-                      cancelButtonTitle:@"Okay"
-                      otherButtonTitles:nil] show];
 }
 
 #pragma mark - UITableViewDataSource

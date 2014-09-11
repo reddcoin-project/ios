@@ -8,10 +8,7 @@
 
 #import "RDDConstants.h"
 
-NSString * const kReddAPIBaseURL = @"https://api.reddapi.com/v1/json/";
-NSString * const kDefaultsReddAPIGETKey = @"kReddAPIGETKey";
-NSString * const kDefaultsReddAPIPOSTKey = @"kReddAPIPOSTKey";
-NSString * const kDefaultsReddAPIUsername = @"kReddAPIUsername";
+NSString * const kReddcoinCurrencyCode = @"RDD";
 
 @implementation RDDConstants
 @end

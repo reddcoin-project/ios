@@ -9,56 +9,31 @@
 #import "RDDDashboardViewController.h"
 
 #import "RDDConstants.h"
-#import "RDDReddAPIManager.h"
+#import "RDDStringFormatter.h"
 
 @interface RDDDashboardViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *confirmedBalanceTextField;
-@property (weak, nonatomic) IBOutlet UILabel *pendingDepositsTextField;
-@property (nonatomic, strong) RDDReddAPIManager *reddApi;
+@property (weak, nonatomic) IBOutlet UILabel *balanceValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *stakeValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalValueLabel;
+
 @end
 
 @implementation RDDDashboardViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    [self configureReddAPI];
-    [self loadUserBalanceDetail];
+    [self loadDashboardData];
 }
 
-- (void)configureReddAPI
+- (void)loadDashboardData
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.reddApi = [[RDDReddAPIManager alloc] initWithGetKey:[defaults stringForKey:kDefaultsReddAPIGETKey]
-                                                     postKey:[defaults stringForKey:kDefaultsReddAPIPOSTKey]];
-}
-
-- (void)loadUserBalanceDetail
-{
-    NSString *username = [[NSUserDefaults standardUserDefaults] stringForKey:kDefaultsReddAPIUsername];
+    NSNumber *balance = @(arc4random_uniform(10000000));
+    NSNumber *stake = @(arc4random_uniform(1000));
+    NSNumber *total = @([balance intValue] + [stake intValue]);
     
-    [self.reddApi getUserBalanceDetailForUsername:username
-                                          success:^(NSDictionary *json) {
-                                              [self parseUserBalanceDetailJSON:json];
-                                          } failure:^(NSError *error) {
-                                              [self showGenericAlert];
-                                          }];
-}
-
-- (void)parseUserBalanceDetailJSON:(NSDictionary *)json
-{
-    NSLog(@"%@", json);
-    self.confirmedBalanceTextField.text = [NSString stringWithFormat:@"%@", json[@"ConfirmedBalance"]];
-    self.pendingDepositsTextField.text = [NSString stringWithFormat:@"%@", json[@"PendingDeposits"]];
-}
-
-- (void)showGenericAlert
-{
-    [[[UIAlertView alloc] initWithTitle:@"Generic Error"
-                                message:@"Something went wrong."
-                               delegate:nil
-                      cancelButtonTitle:@"Okay"
-                      otherButtonTitles:nil] show];
+    self.balanceValueLabel.text = [RDDStringFormatter formatAmount:balance includeCurrencyCode:YES];
+    self.stakeValueLabel.text = [RDDStringFormatter formatAmount:stake includeCurrencyCode:YES];
+    self.totalValueLabel.text = [RDDStringFormatter formatAmount:total includeCurrencyCode:YES];
 }
 
 @end

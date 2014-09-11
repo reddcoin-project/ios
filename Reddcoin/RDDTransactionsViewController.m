@@ -9,10 +9,9 @@
 #import "RDDTransactionsViewController.h"
 
 #import "RDDConstants.h"
-#import "RDDReddAPIManager.h"
 
 @interface RDDTransactionsViewController ()
-@property (nonatomic, strong) RDDReddAPIManager *reddApi;
+
 @end
 
 @implementation RDDTransactionsViewController
@@ -20,14 +19,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self configureReddAPI];
+    [self loadTransactionData];
 }
 
-- (void)configureReddAPI
+- (void)loadTransactionData
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.reddApi = [[RDDReddAPIManager alloc] initWithGetKey:[defaults stringForKey:kDefaultsReddAPIGETKey]
-                                                     postKey:[defaults stringForKey:kDefaultsReddAPIPOSTKey]];
+
 }
 
 @end
