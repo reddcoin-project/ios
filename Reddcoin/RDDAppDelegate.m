@@ -20,8 +20,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UITabBar appearance] setSelectedImageTintColor:[RDDColor redColor]];
+    [[UIButton appearance] setTintColor:[RDDColor redColor]];
     return YES;
 }
 

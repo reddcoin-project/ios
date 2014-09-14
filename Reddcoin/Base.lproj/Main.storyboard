@@ -17,9 +17,37 @@
                     <view key="view" contentMode="scaleToFill" id="RPy-sc-c96">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="v6t-5G-LBq">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="VyD-1d-Xcd" id="Cwq-pV-ILh"/>
+                                    <outlet property="delegate" destination="VyD-1d-Xcd" id="o0H-Ip-h62"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="v6t-5G-LBq" firstAttribute="leading" secondItem="RPy-sc-c96" secondAttribute="leading" id="NIL-UK-oSc"/>
+                            <constraint firstAttribute="bottom" secondItem="v6t-5G-LBq" secondAttribute="bottom" id="Q0t-Cr-hah"/>
+                            <constraint firstItem="v6t-5G-LBq" firstAttribute="top" secondItem="RPy-sc-c96" secondAttribute="top" id="T2E-ST-Y2v"/>
+                            <constraint firstAttribute="centerY" secondItem="v6t-5G-LBq" secondAttribute="centerY" id="dyp-pl-Bdh"/>
+                            <constraint firstAttribute="trailing" secondItem="v6t-5G-LBq" secondAttribute="trailing" id="naM-eG-ZvN"/>
+                            <constraint firstAttribute="centerX" secondItem="v6t-5G-LBq" secondAttribute="centerX" id="piQ-sJ-c3z"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Receive" id="di8-Lc-JSv"/>
+                    <navigationItem key="navigationItem" title="Receive" id="di8-Lc-JSv">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Lyd-mH-A5q">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="Lbn-Ih-8yX" kind="show" identifier="ShowNewReceivingAddress" id="Ern-dP-iju"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="v6t-5G-LBq" id="CMi-BD-sRw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VXc-sy-mzt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -37,7 +65,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="o8Y-RB-Sxt">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="o8Y-RB-Sxt">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -47,6 +75,14 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="o8Y-RB-Sxt" secondAttribute="centerX" id="JWB-7r-yiQ"/>
+                            <constraint firstAttribute="centerY" secondItem="o8Y-RB-Sxt" secondAttribute="centerY" id="Ufp-DX-G8g"/>
+                            <constraint firstItem="o8Y-RB-Sxt" firstAttribute="leading" secondItem="DMe-q3-hBj" secondAttribute="leading" id="c8H-io-aes"/>
+                            <constraint firstItem="o8Y-RB-Sxt" firstAttribute="top" secondItem="DMe-q3-hBj" secondAttribute="top" id="idc-wh-4xt"/>
+                            <constraint firstAttribute="bottom" secondItem="o8Y-RB-Sxt" secondAttribute="bottom" id="p6r-Qy-ucL"/>
+                            <constraint firstAttribute="trailing" secondItem="o8Y-RB-Sxt" secondAttribute="trailing" id="zkh-Kg-EPa"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Transactions" id="fwp-Os-ARH"/>
                     <connections>
@@ -461,6 +497,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pSw-ki-M6U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4321" y="-341"/>
+        </scene>
+        <!--New Address-->
+        <scene sceneID="Spq-eh-6WH">
+            <objects>
+                <viewController title="New Address" id="Lbn-Ih-8yX" customClass="RDDNewReceivingAddressViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="d2v-yz-nv7"/>
+                        <viewControllerLayoutGuide type="bottom" id="2Ta-Bg-fep"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SHI-Y1-hTh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="87l-cG-kmU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4321" y="415"/>
         </scene>
     </scenes>
     <resources>

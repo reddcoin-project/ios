@@ -8,14 +8,60 @@
 
 #import "RDDReceiveViewController.h"
 
-@interface RDDReceiveViewController ()
+#import "RDDColor.h"
 
+@interface RDDReceiveViewController ()
+@property (strong, nonatomic) NSArray *addresses;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
 @implementation RDDReceiveViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self loadReceivingAddressesData];
+}
+
+- (void)loadReceivingAddressesData
+{
+    self.addresses = @[@{@"label" : @"label one", @"address" : @"RuUPmA82nTpKqGXrsrEShHNBBZ3xaH5NoU"},
+                       @{@"label" : @"label two", @"address" : @"Rgy9p27HPTAgqSs6R2w3QBn5gwVEFwsAiC"},
+                       @{@"label" : @"label three", @"address" : @"RawUuT5FWZGiEhwEmRC9568oYgZyqair2Y"},
+                       @{@"label" : @"label four", @"address" : @"RhGpzq2dQMTa9sWkcKHxb5N3FWR87uLDz1"}];
+}
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.addresses count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger row = indexPath.row;
+    NSString *cellIdentifier = @"ReuseIdentifier";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+        cell.backgroundColor = [RDDColor backgroundColor];
+    }
+    
+    NSDictionary *address = self.addresses[row];
+    
+    cell.textLabel.text = address[@"label"];
+    cell.detailTextLabel.text = address[@"address"];
+    
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end
