@@ -9,6 +9,7 @@
 #import "RDDConstants.h"
 
 NSString * const kReddcoinCurrencyCode = @"RDD";
+NSString * const kReddcoinQRCodeScheme = @"reddcoin";
 
 @implementation RDDConstants
 @end

@@ -20,7 +20,8 @@
 
 @implementation RDDDashboardViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self loadDashboardData];
 }

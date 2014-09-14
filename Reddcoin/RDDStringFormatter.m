@@ -16,6 +16,7 @@
 {
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    [numberFormatter setMaximumFractionDigits:8];
     
     NSString *numberAsString = [numberFormatter stringFromNumber:amount];
     

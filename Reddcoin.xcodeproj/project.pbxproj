@@ -12,8 +12,15 @@
 		660F2F2519A6644100492E7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 660F2F2319A6644100492E7F /* Main.storyboard */; };
 		660F2F2719A6644100492E7F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 660F2F2619A6644100492E7F /* Images.xcassets */; };
 		661DBEE719C0074C003E124C /* RDDStringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 661DBEE619C0074C003E124C /* RDDStringFormatter.m */; };
+		666A07B019C51CA90092A9FF /* RDDElectrumClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 666A07AF19C51CA90092A9FF /* RDDElectrumClient.m */; };
+		666A07B319C525ED0092A9FF /* RDDColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 666A07B219C525ED0092A9FF /* RDDColor.m */; };
+		66A52E9B19C1456D005B0DCF /* reddcoin-transactions.json in Resources */ = {isa = PBXBuildFile; fileRef = 66A52E9A19C1456D005B0DCF /* reddcoin-transactions.json */; };
 		66B3429619A7E2C400BA3D1E /* RDDDashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B3429519A7E2C400BA3D1E /* RDDDashboardViewController.m */; };
 		66B3429919A7E2DD00BA3D1E /* RDDTransactionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B3429819A7E2DD00BA3D1E /* RDDTransactionsViewController.m */; };
+		66C6D93119C4FA9E00E75C6C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66C6D93019C4FA9E00E75C6C /* AVFoundation.framework */; };
+		66C6D93419C4FAC700E75C6C /* RDDScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C6D93319C4FAC700E75C6C /* RDDScanViewController.m */; };
+		66C6D93819C5063700E75C6C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66C6D93719C5063700E75C6C /* AudioToolbox.framework */; };
+		66C6D93B19C50ECA00E75C6C /* RDDQRCodeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C6D93A19C50ECA00E75C6C /* RDDQRCodeParser.m */; };
 		66CF7CF919AA80B200E90DE3 /* RDDAddressesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66CF7CF819AA80B200E90DE3 /* RDDAddressesViewController.m */; };
 		66CF7CFC19AA813100E90DE3 /* RDDSendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66CF7CFB19AA813100E90DE3 /* RDDSendViewController.m */; };
 		66CF7CFF19AA814300E90DE3 /* RDDReceiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66CF7CFE19AA814300E90DE3 /* RDDReceiveViewController.m */; };
@@ -31,10 +38,21 @@
 		660F2F2619A6644100492E7F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		661DBEE519C0074C003E124C /* RDDStringFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDStringFormatter.h; sourceTree = "<group>"; };
 		661DBEE619C0074C003E124C /* RDDStringFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDStringFormatter.m; sourceTree = "<group>"; };
+		666A07AE19C51CA90092A9FF /* RDDElectrumClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDElectrumClient.h; sourceTree = "<group>"; };
+		666A07AF19C51CA90092A9FF /* RDDElectrumClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDElectrumClient.m; sourceTree = "<group>"; };
+		666A07B119C525ED0092A9FF /* RDDColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDColor.h; sourceTree = "<group>"; };
+		666A07B219C525ED0092A9FF /* RDDColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDColor.m; sourceTree = "<group>"; };
+		66A52E9A19C1456D005B0DCF /* reddcoin-transactions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "reddcoin-transactions.json"; sourceTree = "<group>"; };
 		66B3429419A7E2C400BA3D1E /* RDDDashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDDashboardViewController.h; sourceTree = "<group>"; };
 		66B3429519A7E2C400BA3D1E /* RDDDashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDDashboardViewController.m; sourceTree = "<group>"; };
 		66B3429719A7E2DD00BA3D1E /* RDDTransactionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDTransactionsViewController.h; sourceTree = "<group>"; };
 		66B3429819A7E2DD00BA3D1E /* RDDTransactionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDTransactionsViewController.m; sourceTree = "<group>"; };
+		66C6D93019C4FA9E00E75C6C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		66C6D93219C4FAC700E75C6C /* RDDScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDScanViewController.h; sourceTree = "<group>"; };
+		66C6D93319C4FAC700E75C6C /* RDDScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDScanViewController.m; sourceTree = "<group>"; };
+		66C6D93719C5063700E75C6C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		66C6D93919C50ECA00E75C6C /* RDDQRCodeParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDQRCodeParser.h; sourceTree = "<group>"; };
+		66C6D93A19C50ECA00E75C6C /* RDDQRCodeParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDQRCodeParser.m; sourceTree = "<group>"; };
 		66CF7CF719AA80B200E90DE3 /* RDDAddressesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDAddressesViewController.h; sourceTree = "<group>"; };
 		66CF7CF819AA80B200E90DE3 /* RDDAddressesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDAddressesViewController.m; sourceTree = "<group>"; };
 		66CF7CFA19AA813100E90DE3 /* RDDSendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDSendViewController.h; sourceTree = "<group>"; };
@@ -54,6 +72,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66C6D93819C5063700E75C6C /* AudioToolbox.framework in Frameworks */,
+				66C6D93119C4FA9E00E75C6C /* AVFoundation.framework in Frameworks */,
 				EC8A5CDA9B1B435E97B2DC97 /* libPods-Reddcoin.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -88,12 +108,20 @@
 				66CF7CF819AA80B200E90DE3 /* RDDAddressesViewController.m */,
 				660F2F1D19A6644100492E7F /* RDDAppDelegate.h */,
 				660F2F1E19A6644100492E7F /* RDDAppDelegate.m */,
+				666A07B119C525ED0092A9FF /* RDDColor.h */,
+				666A07B219C525ED0092A9FF /* RDDColor.m */,
 				66ED50BF19A6780D0013DD71 /* RDDConstants.h */,
 				66ED50C019A6780D0013DD71 /* RDDConstants.m */,
 				66B3429419A7E2C400BA3D1E /* RDDDashboardViewController.h */,
 				66B3429519A7E2C400BA3D1E /* RDDDashboardViewController.m */,
+				666A07AE19C51CA90092A9FF /* RDDElectrumClient.h */,
+				666A07AF19C51CA90092A9FF /* RDDElectrumClient.m */,
+				66C6D93919C50ECA00E75C6C /* RDDQRCodeParser.h */,
+				66C6D93A19C50ECA00E75C6C /* RDDQRCodeParser.m */,
 				66CF7CFD19AA814300E90DE3 /* RDDReceiveViewController.h */,
 				66CF7CFE19AA814300E90DE3 /* RDDReceiveViewController.m */,
+				66C6D93219C4FAC700E75C6C /* RDDScanViewController.h */,
+				66C6D93319C4FAC700E75C6C /* RDDScanViewController.m */,
 				66CF7CFA19AA813100E90DE3 /* RDDSendViewController.h */,
 				66CF7CFB19AA813100E90DE3 /* RDDSendViewController.m */,
 				661DBEE519C0074C003E124C /* RDDStringFormatter.h */,
@@ -101,6 +129,7 @@
 				66B3429719A7E2DD00BA3D1E /* RDDTransactionsViewController.h */,
 				66B3429819A7E2DD00BA3D1E /* RDDTransactionsViewController.m */,
 				660F2F1919A6644100492E7F /* Supporting Files */,
+				66A52E9919C1456D005B0DCF /* TempData */,
 			);
 			path = Reddcoin;
 			sourceTree = "<group>";
@@ -114,9 +143,19 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		66A52E9919C1456D005B0DCF /* TempData */ = {
+			isa = PBXGroup;
+			children = (
+				66A52E9A19C1456D005B0DCF /* reddcoin-transactions.json */,
+			);
+			path = TempData;
+			sourceTree = "<group>";
+		};
 		D54724666DEE4994B2D3E515 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				66C6D93719C5063700E75C6C /* AudioToolbox.framework */,
+				66C6D93019C4FA9E00E75C6C /* AVFoundation.framework */,
 				F25927EF7FB1474F8AE3E1C2 /* libPods.a */,
 				B8624A0E9A024CF4B4903F2A /* libPods-Reddcoin.a */,
 				7361FF96A20442FA903C73D6 /* libPods-ReddcoinTests.a */,
@@ -184,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				660F2F2519A6644100492E7F /* Main.storyboard in Resources */,
+				66A52E9B19C1456D005B0DCF /* reddcoin-transactions.json in Resources */,
 				660F2F2719A6644100492E7F /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,14 +268,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66C6D93B19C50ECA00E75C6C /* RDDQRCodeParser.m in Sources */,
 				66B3429619A7E2C400BA3D1E /* RDDDashboardViewController.m in Sources */,
 				66ED50C119A6780D0013DD71 /* RDDConstants.m in Sources */,
 				66CF7CFF19AA814300E90DE3 /* RDDReceiveViewController.m in Sources */,
+				666A07B019C51CA90092A9FF /* RDDElectrumClient.m in Sources */,
 				66B3429919A7E2DD00BA3D1E /* RDDTransactionsViewController.m in Sources */,
 				660F2F1F19A6644100492E7F /* RDDAppDelegate.m in Sources */,
 				660F2F1C19A6644100492E7F /* main.m in Sources */,
 				66CF7CFC19AA813100E90DE3 /* RDDSendViewController.m in Sources */,
 				661DBEE719C0074C003E124C /* RDDStringFormatter.m in Sources */,
+				66C6D93419C4FAC700E75C6C /* RDDScanViewController.m in Sources */,
+				666A07B319C525ED0092A9FF /* RDDColor.m in Sources */,
 				66CF7CF919AA80B200E90DE3 /* RDDAddressesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

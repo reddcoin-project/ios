@@ -9,10 +9,18 @@
 #import "RDDSendViewController.h"
 
 #import "RDDConstants.h"
+#import "RDDElectrumClient.h"
+#import "RDDQRCodeParser.h"
+#import "RDDScanViewController.h"
+#import "RDDStringFormatter.h"
 
-@interface RDDSendViewController ()
+@interface RDDSendViewController () <RDDScanViewControllerDelegate, UIAlertViewDelegate>
+@property (strong, nonatomic) RDDElectrumClient *electrum;
+
 @property (weak, nonatomic) IBOutlet UITextField *addressTextField;
 @property (weak, nonatomic) IBOutlet UITextField *amountTextField;
+@property (weak, nonatomic) IBOutlet UIButton *scanButton;
+@property (weak, nonatomic) IBOutlet UIButton *contactsButton;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
 @end
 
@@ -21,12 +29,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.electrum = [[RDDElectrumClient alloc] init];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"PresentScan"]) {
+        RDDScanViewController *vc = (RDDScanViewController *)segue.destinationViewController;
+        vc.delegate = self;
+    }
 }
 
 - (void)setInterfaceEnabled:(BOOL)enabled
 {
     self.addressTextField.enabled = enabled;
     self.amountTextField.enabled = enabled;
+    self.scanButton.enabled = enabled;
+    self.contactsButton.enabled = enabled;
     self.sendButton.enabled = enabled;
 }
 
@@ -34,21 +53,54 @@
 {
     [self setInterfaceEnabled:NO];
     
-    NSString *address = self.addressTextField.text;
-    address = [address stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    // Validate address
+    NSString *address = [self sanitizedAddress];
+    if (address == nil) {
+        [self showRecipientAlert];
+        [self setInterfaceEnabled:YES];
+        return;
+    }
     
-    NSString *amountString = self.amountTextField.text;
-    amountString = [amountString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    
-    if ([amountString length] == 0) {
+    // Validate amount
+    NSNumber *amount = [self sanitizedAmount];
+    if (amount == nil) {
         [self showAmountAlert];
         [self setInterfaceEnabled:YES];
         return;
     }
     
-    NSNumber *amount = [NSNumber numberWithFloat:[amountString floatValue]];
+    // Confirm send
+    [self showSendConfirmationAlert];
+}
+
+- (NSString *)sanitizedAddress
+{
+    NSString *address = self.addressTextField.text;
+    address = [address stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    return ([address length] == 0) ? nil : address;
+}
+
+- (NSNumber *)sanitizedAmount
+{
+    NSString *amountString = self.amountTextField.text;
+    amountString = [amountString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    if ([amountString length] == 0) {
+        return nil;
+    } else {
+        return [NSNumber numberWithFloat:[amountString floatValue]];
+    }
+}
+
+- (void)showSendConfirmationAlert
+{
+    NSString *amountStr = [RDDStringFormatter formatAmount:[self sanitizedAmount] includeCurrencyCode:YES];
+    NSString *msg = [NSString stringWithFormat:@"Are you sure you want to send %@ to %@?", amountStr, [self sanitizedAddress]];
     
-    // TODO: Send
+    [[[UIAlertView alloc] initWithTitle:@"Send Reddcoins"
+                                message:msg
+                               delegate:self
+                      cancelButtonTitle:@"Cancel"
+                      otherButtonTitles:@"Yes", nil] show];
 }
 
 - (void)showAmountAlert
@@ -78,10 +130,67 @@
                       otherButtonTitles:nil] show];
 }
 
+- (void)showSendErrorAlert
+{
+    [[[UIAlertView alloc] initWithTitle:@"Send Error"
+                                message:@"Reddcoin transaction failed."
+                               delegate:nil
+                      cancelButtonTitle:@"Okay"
+                      otherButtonTitles:nil] show];
+}
+
 - (void)clearFields
 {
     self.addressTextField.text = @"";
     self.amountTextField.text = @"";
+}
+
+- (void)send
+{
+    NSString *address = [self sanitizedAddress];
+    NSNumber *amount = [self sanitizedAmount];
+    
+    [self.electrum sendAmount:amount
+                    toAddress:address
+                      success:^{
+                          [self clearFields];
+                          [self setInterfaceEnabled:YES];
+                          [self showSentAlert];
+                      } failure:^(NSError *error) {
+                          [self setInterfaceEnabled:YES];
+                          [self showSendErrorAlert];
+                      }];
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        // Cancel
+        [self setInterfaceEnabled:YES];
+    } else {
+        // Yes
+        [self send];
+    }
+}
+
+#pragma mark - RDDScanViewControllerDelegate
+
+- (void)rddScanViewController:(RDDScanViewController *)controller didScan:(NSString *)value
+{
+    NSLog(@"rddScanViewController:didScan: %@", value);
+    
+    [controller dismissViewControllerAnimated:YES completion:NULL];
+    
+    NSDictionary *scanned = [RDDQRCodeParser parse:value];
+    if (scanned) {
+        self.addressTextField.text = scanned[@"address"];
+        
+        if (scanned[@"amount"]) {
+            self.amountTextField.text = scanned[@"amount"];
+        }
+    }
 }
 
 @end

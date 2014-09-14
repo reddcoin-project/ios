@@ -10,4 +10,5 @@
 
 @interface RDDConstants : NSObject
 extern NSString * const kReddcoinCurrencyCode;
+extern NSString * const kReddcoinQRCodeScheme;
 @end

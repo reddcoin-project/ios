@@ -8,6 +8,8 @@
 
 #import "RDDAppDelegate.h"
 
+#import "RDDColor.h"
+
 @interface RDDAppDelegate ()
 
 @end
@@ -17,6 +19,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
+    [[UITabBar appearance] setSelectedImageTintColor:[RDDColor redColor]];
     return YES;
 }
 
