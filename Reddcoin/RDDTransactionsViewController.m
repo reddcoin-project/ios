@@ -10,7 +10,9 @@
 
 #import "RDDColor.h"
 #import "RDDConstants.h"
+#import "RDDQTExportParser.h"
 #import "RDDStringFormatter.h"
+#import "RDDTransactionViewController.h"
 
 @interface RDDTransactionsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -32,6 +34,17 @@
     self.transactions = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ShowTransaction"]) {
+        RDDTransactionViewController *vc = (RDDTransactionViewController *)segue.destinationViewController;
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        NSDictionary *transaction = self.transactions[indexPath.row];
+        vc.transaction = transaction;
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -42,27 +55,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger row = indexPath.row;
-    NSString *cellIdentifier = @"ReuseIdentifier";
+    NSString *cellIdentifier = @"TransactionCellIdentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
-        cell.backgroundColor = [RDDColor backgroundColor];
     }
     
     NSDictionary *transaction = self.transactions[row];
     NSString *confirmedString = [transaction[@"Confirmed"] boolValue] ? @"Confirmed" : @"Unconfirmed";
     
-    NSNumber *amount;
-    if ([transaction[@"Amount"] isKindOfClass:[NSNumber class]]) {
-        // 124.123
-        amount = transaction[@"Amount"];
-    } else {
-        // "1 234.123"
-        NSString *str = transaction[@"Amount"];
-        str = [str stringByReplacingOccurrencesOfString:@" " withString:@""];
-        amount = @([str floatValue]);
-    }
-    
+    NSNumber *amount = [RDDQTExportParser parseAmount:transaction[@"Amount"]];
     NSString *amountStr = [RDDStringFormatter formatAmount:amount includeCurrencyCode:NO];
     
     cell.textLabel.text = [NSString stringWithFormat:@"%@: %@", confirmedString, amountStr];
@@ -73,9 +75,6 @@
 
 #pragma mark - UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {}
 
 @end
