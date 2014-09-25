@@ -9,6 +9,7 @@
 #import "RDDAppDelegate.h"
 
 #import "RDDColor.h"
+#import "RDDSeedData.h"
 
 @interface RDDAppDelegate ()
 
@@ -23,6 +24,7 @@
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UITabBar appearance] setSelectedImageTintColor:[RDDColor redColor]];
     [[UIButton appearance] setTintColor:[RDDColor redColor]];
+    [[[RDDSeedData alloc] init] generate];
     return YES;
 }
 

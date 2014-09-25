@@ -11,7 +11,9 @@
 #import "RDDColor.h"
 #import "RDDConstants.h"
 #import "RDDQTExportParser.h"
+#import "RDDSeedData.h"
 #import "RDDStringFormatter.h"
+#import "RDDTransaction.h"
 #import "RDDTransactionViewController.h"
 
 @interface RDDTransactionsViewController ()
@@ -21,17 +23,15 @@
 
 @implementation RDDTransactionsViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-
     [self loadTransactionData];
 }
 
 - (void)loadTransactionData
 {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"reddcoin-transactions" ofType:@"json"];
-    NSData *data = [NSData dataWithContentsOfFile:path];
-    self.transactions = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    self.transactions = [[[RDDSeedData alloc] init] transactions];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -39,7 +39,7 @@
     if ([segue.identifier isEqualToString:@"ShowTransaction"]) {
         RDDTransactionViewController *vc = (RDDTransactionViewController *)segue.destinationViewController;
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDictionary *transaction = self.transactions[indexPath.row];
+        RDDTransaction *transaction = self.transactions[indexPath.row];
         vc.transaction = transaction;
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
@@ -61,14 +61,12 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     
-    NSDictionary *transaction = self.transactions[row];
-    NSString *confirmedString = [transaction[@"Confirmed"] boolValue] ? @"Confirmed" : @"Unconfirmed";
-    
-    NSNumber *amount = [RDDQTExportParser parseAmount:transaction[@"Amount"]];
-    NSString *amountStr = [RDDStringFormatter formatAmount:amount includeCurrencyCode:NO];
+    RDDTransaction *transaction = self.transactions[row];
+    NSString *confirmedString = transaction.confirmed ? @"Confirmed" : @"Unconfirmed";
+    NSString *amountStr = [RDDStringFormatter formatAmount:transaction.amount includeCurrencyCode:NO];
     
     cell.textLabel.text = [NSString stringWithFormat:@"%@: %@", confirmedString, amountStr];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ | %@ | %@", transaction[@"Date"], transaction[@"Type"], transaction[@"Label"]];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ | %@ | %@", transaction.dateString, transaction.type, transaction.label];
     
     return cell;
 }

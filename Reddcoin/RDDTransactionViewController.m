@@ -12,6 +12,7 @@
 #import "RDDConstants.h"
 #import "RDDQTExportParser.h"
 #import "RDDStringFormatter.h"
+#import "RDDTransaction.h"
 
 #define ROW_ID      0
 #define ROW_DATE    1
@@ -54,14 +55,13 @@
         case ROW_ID:
         {
             textString = @"ID:";
-            NSString *txid = [RDDQTExportParser normalizeTransactionID:self.transaction[@"ID"]];
-            detailString = txid;
+            detailString = self.transaction.transactionID;
             cell.detailTextLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
             break;
         }
         case ROW_DATE:
             textString = @"Date:";
-            detailString = self.transaction[@"Date"];
+            detailString = self.transaction.dateString;
             break;
         case ROW_STATUS:
             textString = @"Status:";
@@ -70,13 +70,12 @@
         case ROW_AMOUNT:
         {
             textString = @"Amount:";
-            NSNumber *amount = [RDDQTExportParser parseAmount:self.transaction[@"Amount"]];
-            detailString = [RDDStringFormatter formatAmount:amount includeCurrencyCode:NO];
+            detailString = [RDDStringFormatter formatAmount:self.transaction.amount includeCurrencyCode:NO];
             break;
         }
         case ROW_ADDRESS:
             textString = @"Address:";
-            detailString = self.transaction[@"Address"];
+            detailString = self.transaction.address;
             break;
         default:
             break;
@@ -94,8 +93,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSString *txid = [RDDQTExportParser normalizeTransactionID:self.transaction[@"ID"]];
-    NSString *urlString = [kReddcoinBlockExplorerBaseURL stringByAppendingString:txid];
+    NSString *urlString = [kReddcoinBlockExplorerBaseURL stringByAppendingString:self.transaction.transactionID];
     NSURL *url = [NSURL URLWithString:urlString];
     [[UIApplication sharedApplication] openURL:url];
 }

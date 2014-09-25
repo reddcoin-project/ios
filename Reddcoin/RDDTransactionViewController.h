@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class RDDTransaction;
+
 @interface RDDTransactionViewController : UIViewController
-@property (nonatomic, strong) NSDictionary *transaction;
+@property (nonatomic, strong) RDDTransaction *transaction;
 @end
