@@ -8,9 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+@class RDDContact, RDDReceivingAddress, RDDTransaction;
+
 @interface RDDSeedData : NSObject
 - (void)generate;
 - (NSArray *)contacts;
 - (NSArray *)receivingAddresses;
 - (NSArray *)transactions;
+- (void)addContact:(RDDContact *)contact;
+- (void)addReceivingAddress:(RDDReceivingAddress *)address;
+- (void)addTransaction:(RDDTransaction *)transaction;
 @end

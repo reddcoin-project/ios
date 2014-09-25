@@ -9,29 +9,32 @@
 #import "RDDAddressesViewController.h"
 
 #import "RDDConstants.h"
+#import "RDDContact.h"
+#import "RDDSeedData.h"
 
 @interface RDDAddressesViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSArray *users;
+@property (nonatomic, strong) NSArray *contacts;
 @end
 
 @implementation RDDAddressesViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    [self loadAddressData];
+    [self loadContactsData];
 }
 
-- (void)loadAddressData
+- (void)loadContactsData
 {
-
+    self.contacts = [[[RDDSeedData alloc] init] contacts];
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.users count];
+    return [self.contacts count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -43,9 +46,9 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     
-    NSDictionary *user = self.users[row];
-    cell.textLabel.text = user[@"Username"];
-    cell.detailTextLabel.text = user[@"DepositAddress"];
+    RDDContact *contact = self.contacts[row];
+    cell.textLabel.text = contact.label;
+    cell.detailTextLabel.text = contact.address;
     
     return cell;
 }

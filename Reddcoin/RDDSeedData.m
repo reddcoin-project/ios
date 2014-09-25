@@ -16,12 +16,23 @@ NSString * const RDDContactsKey = @"RDDContactsKey";
 NSString * const RDDReceivingAddressesKey = @"RDDReceivingAddressesKey";
 NSString * const RDDTransactionsKey = @"RDDTransactionsKey";
 
+@interface RDDSeedData ()
+@property (nonatomic, strong) NSUserDefaults *defaults;
+@end
+
 @implementation RDDSeedData
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        self.defaults = [NSUserDefaults standardUserDefaults];
+    }
+    return self;
+}
 
 - (void)generate
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
     NSArray *contacts = [self contacts];
     if (contacts && [contacts count] > 0) return; // Seed data already generated
     
@@ -29,45 +40,60 @@ NSString * const RDDTransactionsKey = @"RDDTransactionsKey";
     
     // Contacts / Addresses
     contacts = [self buildContacts];
-    NSData *contactsData = [NSKeyedArchiver archivedDataWithRootObject:contacts];
-    [defaults setObject:contactsData forKey:RDDContactsKey];
+    [self persistContacts:contacts];
     
     // Receiving Addresses
     NSArray *addresses = [self buildReceivingAddresses];
-    NSData *addressesData = [NSKeyedArchiver archivedDataWithRootObject:addresses];
-    [defaults setObject:addressesData forKey:RDDReceivingAddressesKey];
+    [self persistReceivingAddresses:addresses];
     
     // Transactions
     NSArray *transactions = [self buildTransactions];
-    NSData *transactionsData = [NSKeyedArchiver archivedDataWithRootObject:transactions];
-    [defaults setObject:transactionsData forKey:RDDTransactionsKey];
+    [self persistTransactions:transactions];
     
-    // Persist everything.
-    [defaults synchronize];
+    // Synchronize everything.
+    [self.defaults synchronize];
 }
 
 - (NSArray *)contacts
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSData *contactsData = [defaults objectForKey:RDDContactsKey];
+    NSData *contactsData = [self.defaults objectForKey:RDDContactsKey];
     NSArray *contacts = [NSKeyedUnarchiver unarchiveObjectWithData:contactsData];
     return contacts;
 }
 
 - (NSArray *)receivingAddresses
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSData *addressesData = [defaults objectForKey:RDDReceivingAddressesKey];
+    NSData *addressesData = [self.defaults objectForKey:RDDReceivingAddressesKey];
     NSArray *addresses = [NSKeyedUnarchiver unarchiveObjectWithData:addressesData];
     return addresses;
 }
 
 - (NSArray *)transactions
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSData *transactionsData = [defaults objectForKey:RDDTransactionsKey];
+    NSData *transactionsData = [self.defaults objectForKey:RDDTransactionsKey];
     NSArray *transactions = [NSKeyedUnarchiver unarchiveObjectWithData:transactionsData];
     return transactions;
+}
+
+- (void)addContact:(RDDContact *)contact
+{
+    NSMutableArray *contacts = [NSMutableArray arrayWithArray:[self contacts]];
+    [contacts addObject:contact];
+    [self persistContacts:contacts];
+}
+
+- (void)addReceivingAddress:(RDDReceivingAddress *)address
+{
+    NSMutableArray *addresses = [NSMutableArray arrayWithArray:[self receivingAddresses]];
+    [addresses addObject:address];
+    [self persistReceivingAddresses:addresses];
+}
+
+- (void)addTransaction:(RDDTransaction *)transaction
+{
+    NSMutableArray *transactions = [NSMutableArray arrayWithArray:[self transactions]];
+    [transactions addObject:transaction];
+    [self persistTransactions:transactions];
 }
 
 - (NSArray *)buildContacts
@@ -80,6 +106,24 @@ NSString * const RDDTransactionsKey = @"RDDTransactionsKey";
         [contacts addObject:contact];
     }
     return contacts;
+}
+
+- (void)persistContacts:(NSArray *)contacts
+{
+    NSData *contactsData = [NSKeyedArchiver archivedDataWithRootObject:contacts];
+    [self.defaults setObject:contactsData forKey:RDDContactsKey];
+}
+
+- (void)persistReceivingAddresses:(NSArray *)addresses
+{
+    NSData *addressesData = [NSKeyedArchiver archivedDataWithRootObject:addresses];
+    [self.defaults setObject:addressesData forKey:RDDReceivingAddressesKey];
+}
+
+- (void)persistTransactions:(NSArray *)transactions
+{
+    NSData *transactionsData = [NSKeyedArchiver archivedDataWithRootObject:transactions];
+    [self.defaults setObject:transactionsData forKey:RDDTransactionsKey];
 }
 
 - (NSArray *)buildReceivingAddresses
