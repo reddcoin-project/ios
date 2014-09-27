@@ -110,7 +110,7 @@
     if ([amountString length] == 0) {
         return nil;
     } else {
-        return [NSNumber numberWithFloat:[amountString floatValue]];
+        return [NSNumber numberWithDouble:[amountString doubleValue]];
     }
 }
 

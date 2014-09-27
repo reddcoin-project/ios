@@ -1,6 +1,15 @@
 [
     {
         "Address": "RuVcVveU5Xtt7UYMChFc1R4p4LF3QincpK",
+        "Amount": 700,
+        "Confirmed": "true",
+        "Date": "2014-09-10T10:01:37",
+        "ID": "10201516a9aef3af77adbba5e079ee11b6efd7bb0a4cf24ff37ea0e7b8183ee1-000",
+        "Label": "cryptsy",
+        "Type": "Generated"
+    },
+    {
+        "Address": "RuVcVveU5Xtt7UYMChFc1R4p4LF3QincpK",
         "Amount": 450.89039243,
         "Confirmed": "true",
         "Date": "2014-09-10T10:01:37",
