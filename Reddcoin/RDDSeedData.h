@@ -18,4 +18,5 @@
 - (void)addContact:(RDDContact *)contact;
 - (void)addReceivingAddress:(RDDReceivingAddress *)address;
 - (void)addTransaction:(RDDTransaction *)transaction;
+- (void)prependTransaction:(RDDTransaction *)transaction;
 @end

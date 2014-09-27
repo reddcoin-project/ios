@@ -108,6 +108,13 @@ NSString * const RDDTransactionsKey = @"RDDTransactionsKey";
     [self persistTransactions:transactions];
 }
 
+- (void)prependTransaction:(RDDTransaction *)transaction
+{
+    NSMutableArray *transactions = [NSMutableArray arrayWithArray:[self transactions]];
+    [transactions insertObject:transaction atIndex:0];
+    [self persistTransactions:transactions];
+}
+
 - (NSArray *)buildContacts
 {
     NSMutableArray *contacts = [NSMutableArray array];

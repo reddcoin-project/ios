@@ -13,6 +13,7 @@
 #import "RDDContactsViewController.h"
 #import "RDDElectrumClient.h"
 #import "RDDQRCodeParser.h"
+#import "RDDTransaction.h"
 #import "RDDScanViewController.h"
 #import "RDDSeedData.h"
 #import "RDDStringFormatter.h"
@@ -177,14 +178,32 @@
     [self.electrum sendAmount:amount
                     toAddress:address
                       success:^{
+                          [self saveTransaction];
                           [self saveContact];
                           [self clearFields];
                           [self setInterfaceEnabled:YES];
                           [self showSentAlert];
+                          [self postSentNotification];
                       } failure:^(NSError *error) {
                           [self setInterfaceEnabled:YES];
                           [self showSendErrorAlert];
                       }];
+}
+
+- (void)saveTransaction
+{
+    NSDictionary *dict = @{@"Address" : [self sanitizedAddress],
+                           @"Amount" : [self sanitizedAmount],
+                           @"Confirmed" : @"true",
+                           @"Date" : [[NSDate date] description],
+                           @"Label" : [self sanitizedLabel],
+                           @"ID" : @"xtransactionidx",
+                           @"Type" : @"Sent to"
+                           };
+    RDDTransaction *transaction = [[RDDTransaction alloc] initWithDictionary:dict];
+    
+    RDDSeedData *seed = [[RDDSeedData alloc] init];
+    [seed prependTransaction:transaction];
 }
 
 - (void)saveContact
@@ -200,6 +219,11 @@
     
     // Reset selected contact
     self.contact = nil;
+}
+
+- (void)postSentNotification
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:kReddcoinTransactionSuccessfulNotification object:nil];
 }
 
 #pragma mark - UIAlertViewDelegate

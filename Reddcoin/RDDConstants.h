@@ -12,4 +12,6 @@
 extern NSString * const kReddcoinCurrencyCode;
 extern NSString * const kReddcoinQRCodeScheme;
 extern NSString * const kReddcoinBlockExplorerBaseURL;
+
+extern NSString * const kReddcoinTransactionSuccessfulNotification;
 @end

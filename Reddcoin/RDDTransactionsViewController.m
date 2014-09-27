@@ -26,12 +26,34 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self addObservers];
     [self loadTransactionData];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)addObservers
+{
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    
+    [nc addObserver:self
+           selector:@selector(transactionSuccessfulNotification:)
+               name:kReddcoinTransactionSuccessfulNotification
+             object:nil];
 }
 
 - (void)loadTransactionData
 {
     self.transactions = [[[RDDSeedData alloc] init] transactions];
+}
+
+- (void)reload
+{
+    [self loadTransactionData];
+    [self.tableView reloadData];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -74,5 +96,12 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {}
+
+#pragma mark - NSNotificationCenter
+
+- (void)transactionSuccessfulNotification:(NSNotification *)notification
+{
+    [self reload];
+}
 
 @end
