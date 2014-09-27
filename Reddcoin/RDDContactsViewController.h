@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RDDAddressesViewController : UIViewController
+@interface RDDContactsViewController : UIViewController
 
 @end

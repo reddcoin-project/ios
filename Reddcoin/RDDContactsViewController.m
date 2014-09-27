@@ -6,18 +6,18 @@
 //  Copyright (c) 2014 Reddcoin. All rights reserved.
 //
 
-#import "RDDAddressesViewController.h"
+#import "RDDContactsViewController.h"
 
 #import "RDDConstants.h"
 #import "RDDContact.h"
 #import "RDDSeedData.h"
 
-@interface RDDAddressesViewController ()
+@interface RDDContactsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *contacts;
 @end
 
-@implementation RDDAddressesViewController
+@implementation RDDContactsViewController
 
 - (void)viewDidLoad
 {

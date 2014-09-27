@@ -496,7 +496,7 @@
         <!--Contacts-->
         <scene sceneID="Hwi-CV-eCP">
             <objects>
-                <viewController id="7fA-Yd-QhF" customClass="RDDAddressesViewController" sceneMemberID="viewController">
+                <viewController id="7fA-Yd-QhF" customClass="RDDContactsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Zan-og-Wvz"/>
                         <viewControllerLayoutGuide type="bottom" id="NUJ-nj-N9W"/>

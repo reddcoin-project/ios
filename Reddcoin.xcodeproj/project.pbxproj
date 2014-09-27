@@ -29,7 +29,7 @@
 		66C6D93419C4FAC700E75C6C /* RDDScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C6D93319C4FAC700E75C6C /* RDDScanViewController.m */; };
 		66C6D93819C5063700E75C6C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66C6D93719C5063700E75C6C /* AudioToolbox.framework */; };
 		66C6D93B19C50ECA00E75C6C /* RDDQRCodeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C6D93A19C50ECA00E75C6C /* RDDQRCodeParser.m */; };
-		66CF7CF919AA80B200E90DE3 /* RDDAddressesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66CF7CF819AA80B200E90DE3 /* RDDAddressesViewController.m */; };
+		66CF7CF919AA80B200E90DE3 /* RDDContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66CF7CF819AA80B200E90DE3 /* RDDContactsViewController.m */; };
 		66CF7CFC19AA813100E90DE3 /* RDDSendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66CF7CFB19AA813100E90DE3 /* RDDSendViewController.m */; };
 		66CF7CFF19AA814300E90DE3 /* RDDReceiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66CF7CFE19AA814300E90DE3 /* RDDReceiveViewController.m */; };
 		66ED50C119A6780D0013DD71 /* RDDConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 66ED50C019A6780D0013DD71 /* RDDConstants.m */; };
@@ -77,8 +77,8 @@
 		66C6D93719C5063700E75C6C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		66C6D93919C50ECA00E75C6C /* RDDQRCodeParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDQRCodeParser.h; sourceTree = "<group>"; };
 		66C6D93A19C50ECA00E75C6C /* RDDQRCodeParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDQRCodeParser.m; sourceTree = "<group>"; };
-		66CF7CF719AA80B200E90DE3 /* RDDAddressesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDAddressesViewController.h; sourceTree = "<group>"; };
-		66CF7CF819AA80B200E90DE3 /* RDDAddressesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDAddressesViewController.m; sourceTree = "<group>"; };
+		66CF7CF719AA80B200E90DE3 /* RDDContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDContactsViewController.h; sourceTree = "<group>"; };
+		66CF7CF819AA80B200E90DE3 /* RDDContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDContactsViewController.m; sourceTree = "<group>"; };
 		66CF7CFA19AA813100E90DE3 /* RDDSendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDSendViewController.h; sourceTree = "<group>"; };
 		66CF7CFB19AA813100E90DE3 /* RDDSendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDSendViewController.m; sourceTree = "<group>"; };
 		66CF7CFD19AA814300E90DE3 /* RDDReceiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDReceiveViewController.h; sourceTree = "<group>"; };
@@ -128,8 +128,8 @@
 			children = (
 				660F2F2619A6644100492E7F /* Images.xcassets */,
 				660F2F2319A6644100492E7F /* Main.storyboard */,
-				66CF7CF719AA80B200E90DE3 /* RDDAddressesViewController.h */,
-				66CF7CF819AA80B200E90DE3 /* RDDAddressesViewController.m */,
+				66CF7CF719AA80B200E90DE3 /* RDDContactsViewController.h */,
+				66CF7CF819AA80B200E90DE3 /* RDDContactsViewController.m */,
 				660F2F1D19A6644100492E7F /* RDDAppDelegate.h */,
 				660F2F1E19A6644100492E7F /* RDDAppDelegate.m */,
 				666A07B119C525ED0092A9FF /* RDDColor.h */,
@@ -327,7 +327,7 @@
 				669DD58119CA72A300DCEAAA /* RDDQTExportParser.m in Sources */,
 				66C6D93419C4FAC700E75C6C /* RDDScanViewController.m in Sources */,
 				666A07B319C525ED0092A9FF /* RDDColor.m in Sources */,
-				66CF7CF919AA80B200E90DE3 /* RDDAddressesViewController.m in Sources */,
+				66CF7CF919AA80B200E90DE3 /* RDDContactsViewController.m in Sources */,
 				669B637A19D3B3EC00D16190 /* RDDTransaction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
