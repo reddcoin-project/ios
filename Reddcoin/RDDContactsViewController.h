@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RDDContactsViewController : UIViewController
+@class RDDContact, RDDContactsViewController;
 
+@protocol RDDContactsViewControllerDelegate <NSObject>
+- (void)rddContactsViewController:(RDDContactsViewController *)controller didSelectContact:(RDDContact *)contact;
+@end
+
+@interface RDDContactsViewController : UIViewController
+@property (nonatomic, weak) NSObject<RDDContactsViewControllerDelegate> *delegate;
 @end

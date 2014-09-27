@@ -58,7 +58,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    //    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    RDDContact *contact = self.contacts[indexPath.row];
+    [self.delegate rddContactsViewController:self didSelectContact:contact];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

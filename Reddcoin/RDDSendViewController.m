@@ -9,15 +9,19 @@
 #import "RDDSendViewController.h"
 
 #import "RDDConstants.h"
+#import "RDDContact.h"
+#import "RDDContactsViewController.h"
 #import "RDDElectrumClient.h"
 #import "RDDQRCodeParser.h"
 #import "RDDScanViewController.h"
 #import "RDDStringFormatter.h"
 
-@interface RDDSendViewController () <RDDScanViewControllerDelegate, UIAlertViewDelegate>
+@interface RDDSendViewController () <RDDContactsViewControllerDelegate, RDDScanViewControllerDelegate, UIAlertViewDelegate>
 @property (strong, nonatomic) RDDElectrumClient *electrum;
+@property (strong, nonatomic) RDDContact *contact;
 
 @property (weak, nonatomic) IBOutlet UITextField *addressTextField;
+@property (weak, nonatomic) IBOutlet UITextField *labelTextField;
 @property (weak, nonatomic) IBOutlet UITextField *amountTextField;
 @property (weak, nonatomic) IBOutlet UIButton *scanButton;
 @property (weak, nonatomic) IBOutlet UIButton *contactsButton;
@@ -37,16 +41,27 @@
     if ([segue.identifier isEqualToString:@"PresentScan"]) {
         RDDScanViewController *vc = (RDDScanViewController *)segue.destinationViewController;
         vc.delegate = self;
+    } else if ([segue.identifier isEqualToString:@"ShowContacts"]) {
+        RDDContactsViewController *vc = (RDDContactsViewController *)segue.destinationViewController;
+        vc.delegate = self;
     }
 }
 
 - (void)setInterfaceEnabled:(BOOL)enabled
 {
     self.addressTextField.enabled = enabled;
+    self.labelTextField.enabled = enabled;
     self.amountTextField.enabled = enabled;
     self.scanButton.enabled = enabled;
     self.contactsButton.enabled = enabled;
     self.sendButton.enabled = enabled;
+}
+
+- (void)updateInterfaceWithContact:(RDDContact *)contact
+{
+    [self clearFields];
+    self.addressTextField.text = contact.address;
+    self.labelTextField.text = contact.label;
 }
 
 - (IBAction)tappedSendButton:(id)sender
@@ -142,6 +157,7 @@
 - (void)clearFields
 {
     self.addressTextField.text = @"";
+    self.labelTextField.text = @"";
     self.amountTextField.text = @"";
 }
 
@@ -187,10 +203,23 @@
     if (scanned) {
         self.addressTextField.text = scanned[@"address"];
         
+        if (scanned[@"message"]) {
+            self.labelTextField.text = scanned[@"message"];
+        }
+        
         if (scanned[@"amount"]) {
             self.amountTextField.text = scanned[@"amount"];
         }
     }
+}
+
+#pragma mark - RDDContactsViewControllerDelegate
+
+- (void)rddContactsViewController:(RDDContactsViewController *)controller didSelectContact:(RDDContact *)contact
+{
+    NSLog(@"rddContactsViewController:didSelectContact: %@", contact.label);
+    self.contact = contact;
+    [self updateInterfaceWithContact:contact];
 }
 
 @end

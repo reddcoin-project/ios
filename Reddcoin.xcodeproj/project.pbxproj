@@ -128,8 +128,6 @@
 			children = (
 				660F2F2619A6644100492E7F /* Images.xcassets */,
 				660F2F2319A6644100492E7F /* Main.storyboard */,
-				66CF7CF719AA80B200E90DE3 /* RDDContactsViewController.h */,
-				66CF7CF819AA80B200E90DE3 /* RDDContactsViewController.m */,
 				660F2F1D19A6644100492E7F /* RDDAppDelegate.h */,
 				660F2F1E19A6644100492E7F /* RDDAppDelegate.m */,
 				666A07B119C525ED0092A9FF /* RDDColor.h */,
@@ -138,6 +136,8 @@
 				66ED50C019A6780D0013DD71 /* RDDConstants.m */,
 				669B637219D3B0C300D16190 /* RDDContact.h */,
 				669B637319D3B0C300D16190 /* RDDContact.m */,
+				66CF7CF719AA80B200E90DE3 /* RDDContactsViewController.h */,
+				66CF7CF819AA80B200E90DE3 /* RDDContactsViewController.m */,
 				66B3429419A7E2C400BA3D1E /* RDDDashboardViewController.h */,
 				66B3429519A7E2C400BA3D1E /* RDDDashboardViewController.m */,
 				666A07AE19C51CA90092A9FF /* RDDElectrumClient.h */,
