@@ -27,7 +27,8 @@
 
 - (void)loadContactsData
 {
-    self.contacts = [[[RDDSeedData alloc] init] contacts];
+    RDDSeedData *seed = [[RDDSeedData alloc] init];
+    self.contacts = [[[seed contacts] reverseObjectEnumerator] allObjects];
 }
 
 #pragma mark - UITableViewDataSource

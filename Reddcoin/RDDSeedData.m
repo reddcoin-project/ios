@@ -78,7 +78,19 @@ NSString * const RDDTransactionsKey = @"RDDTransactionsKey";
 - (void)addContact:(RDDContact *)contact
 {
     NSMutableArray *contacts = [NSMutableArray arrayWithArray:[self contacts]];
-    [contacts addObject:contact];
+    
+    if ([contacts containsObject:contact]) {
+        // Contact already exists. Update label if necessary.
+        if (contact.label) {
+            NSInteger index = [contacts indexOfObject:contact];
+            RDDContact *existingContact = [contacts objectAtIndex:index];
+            existingContact.label = contact.label;
+        }
+    } else {
+        // Add new contact
+        [contacts addObject:contact];
+    }
+    
     [self persistContacts:contacts];
 }
 

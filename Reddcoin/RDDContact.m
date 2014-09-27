@@ -25,4 +25,14 @@
     [encoder encodeObject:self.label forKey:@"label"];
 }
 
+- (BOOL)isEqual:(id)object
+{
+    if ([object isKindOfClass:[RDDContact class]]) {
+        RDDContact *c = (RDDContact *)object;
+        return [self.address isEqualToString:c.address];
+    } else {
+        return NO;
+    }
+}
+
 @end

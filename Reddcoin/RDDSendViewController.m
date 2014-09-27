@@ -14,6 +14,7 @@
 #import "RDDElectrumClient.h"
 #import "RDDQRCodeParser.h"
 #import "RDDScanViewController.h"
+#import "RDDSeedData.h"
 #import "RDDStringFormatter.h"
 
 @interface RDDSendViewController () <RDDContactsViewControllerDelegate, RDDScanViewControllerDelegate, UIAlertViewDelegate>
@@ -95,6 +96,13 @@
     return ([address length] == 0) ? nil : address;
 }
 
+- (NSString *)sanitizedLabel
+{
+    NSString *label = self.labelTextField.text;
+    label = [label stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    return ([label length] == 0) ? nil : label;
+}
+
 - (NSNumber *)sanitizedAmount
 {
     NSString *amountString = self.amountTextField.text;
@@ -169,6 +177,7 @@
     [self.electrum sendAmount:amount
                     toAddress:address
                       success:^{
+                          [self saveContact];
                           [self clearFields];
                           [self setInterfaceEnabled:YES];
                           [self showSentAlert];
@@ -176,6 +185,21 @@
                           [self setInterfaceEnabled:YES];
                           [self showSendErrorAlert];
                       }];
+}
+
+- (void)saveContact
+{
+    RDDSeedData *seed = [[RDDSeedData alloc] init];
+    
+    // Save a new (or update) contact
+    RDDContact *contact = [[RDDContact alloc] init];
+    contact.address = [self sanitizedAddress];
+    contact.label = [self sanitizedLabel];
+    
+    [seed addContact:contact];
+    
+    // Reset selected contact
+    self.contact = nil;
 }
 
 #pragma mark - UIAlertViewDelegate
