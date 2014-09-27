@@ -8,6 +8,7 @@
 
 #import "RDDContactsViewController.h"
 
+#import "RDDColor.h"
 #import "RDDConstants.h"
 #import "RDDContact.h"
 #import "RDDSeedData.h"
@@ -45,6 +46,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+        cell.backgroundColor = [RDDColor backgroundColor];
     }
     
     RDDContact *contact = self.contacts[row];
