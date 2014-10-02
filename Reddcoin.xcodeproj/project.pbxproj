@@ -15,6 +15,9 @@
 		666A07B019C51CA90092A9FF /* RDDElectrumClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 666A07AF19C51CA90092A9FF /* RDDElectrumClient.m */; };
 		666A07B319C525ED0092A9FF /* RDDColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 666A07B219C525ED0092A9FF /* RDDColor.m */; };
 		666A07B619C536C10092A9FF /* RDDNewReceivingAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 666A07B519C536C10092A9FF /* RDDNewReceivingAddressViewController.m */; };
+		6675B50E19DD090D00C7E69F /* RDDReceiveDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6675B50D19DD090D00C7E69F /* RDDReceiveDetailsViewController.m */; };
+		6675B51119DD946A00C7E69F /* RDDAddressQRTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6675B51019DD946A00C7E69F /* RDDAddressQRTableViewCell.m */; };
+		6675B51419DD98C400C7E69F /* RDDQRCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 6675B51319DD98C400C7E69F /* RDDQRCodeGenerator.m */; };
 		668CBE6A19D3AF59008D89E7 /* RDDSeedData.m in Sources */ = {isa = PBXBuildFile; fileRef = 668CBE6919D3AF59008D89E7 /* RDDSeedData.m */; };
 		669B637419D3B0C300D16190 /* RDDContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 669B637319D3B0C300D16190 /* RDDContact.m */; };
 		669B637719D3B34E00D16190 /* RDDReceivingAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 669B637619D3B34E00D16190 /* RDDReceivingAddress.m */; };
@@ -28,7 +31,7 @@
 		66C6D93119C4FA9E00E75C6C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66C6D93019C4FA9E00E75C6C /* AVFoundation.framework */; };
 		66C6D93419C4FAC700E75C6C /* RDDScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C6D93319C4FAC700E75C6C /* RDDScanViewController.m */; };
 		66C6D93819C5063700E75C6C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66C6D93719C5063700E75C6C /* AudioToolbox.framework */; };
-		66C6D93B19C50ECA00E75C6C /* RDDQRCodeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C6D93A19C50ECA00E75C6C /* RDDQRCodeParser.m */; };
+		66C6D93B19C50ECA00E75C6C /* RDDQRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C6D93A19C50ECA00E75C6C /* RDDQRCode.m */; };
 		66CF7CF919AA80B200E90DE3 /* RDDContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66CF7CF819AA80B200E90DE3 /* RDDContactsViewController.m */; };
 		66CF7CFC19AA813100E90DE3 /* RDDSendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66CF7CFB19AA813100E90DE3 /* RDDSendViewController.m */; };
 		66CF7CFF19AA814300E90DE3 /* RDDReceiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66CF7CFE19AA814300E90DE3 /* RDDReceiveViewController.m */; };
@@ -52,6 +55,12 @@
 		666A07B219C525ED0092A9FF /* RDDColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDColor.m; sourceTree = "<group>"; };
 		666A07B419C536C10092A9FF /* RDDNewReceivingAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDNewReceivingAddressViewController.h; sourceTree = "<group>"; };
 		666A07B519C536C10092A9FF /* RDDNewReceivingAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDNewReceivingAddressViewController.m; sourceTree = "<group>"; };
+		6675B50C19DD090D00C7E69F /* RDDReceiveDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDReceiveDetailsViewController.h; sourceTree = "<group>"; };
+		6675B50D19DD090D00C7E69F /* RDDReceiveDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDReceiveDetailsViewController.m; sourceTree = "<group>"; };
+		6675B50F19DD946A00C7E69F /* RDDAddressQRTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDAddressQRTableViewCell.h; sourceTree = "<group>"; };
+		6675B51019DD946A00C7E69F /* RDDAddressQRTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDAddressQRTableViewCell.m; sourceTree = "<group>"; };
+		6675B51219DD98C400C7E69F /* RDDQRCodeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDQRCodeGenerator.h; sourceTree = "<group>"; };
+		6675B51319DD98C400C7E69F /* RDDQRCodeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDQRCodeGenerator.m; sourceTree = "<group>"; };
 		668CBE6819D3AF59008D89E7 /* RDDSeedData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDSeedData.h; sourceTree = "<group>"; };
 		668CBE6919D3AF59008D89E7 /* RDDSeedData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDSeedData.m; sourceTree = "<group>"; };
 		669B637219D3B0C300D16190 /* RDDContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDContact.h; sourceTree = "<group>"; };
@@ -75,8 +84,8 @@
 		66C6D93219C4FAC700E75C6C /* RDDScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDScanViewController.h; sourceTree = "<group>"; };
 		66C6D93319C4FAC700E75C6C /* RDDScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDScanViewController.m; sourceTree = "<group>"; };
 		66C6D93719C5063700E75C6C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		66C6D93919C50ECA00E75C6C /* RDDQRCodeParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDQRCodeParser.h; sourceTree = "<group>"; };
-		66C6D93A19C50ECA00E75C6C /* RDDQRCodeParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDQRCodeParser.m; sourceTree = "<group>"; };
+		66C6D93919C50ECA00E75C6C /* RDDQRCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDQRCode.h; sourceTree = "<group>"; };
+		66C6D93A19C50ECA00E75C6C /* RDDQRCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDQRCode.m; sourceTree = "<group>"; };
 		66CF7CF719AA80B200E90DE3 /* RDDContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDContactsViewController.h; sourceTree = "<group>"; };
 		66CF7CF819AA80B200E90DE3 /* RDDContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDContactsViewController.m; sourceTree = "<group>"; };
 		66CF7CFA19AA813100E90DE3 /* RDDSendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDSendViewController.h; sourceTree = "<group>"; };
@@ -128,6 +137,8 @@
 			children = (
 				660F2F2619A6644100492E7F /* Images.xcassets */,
 				660F2F2319A6644100492E7F /* Main.storyboard */,
+				6675B50F19DD946A00C7E69F /* RDDAddressQRTableViewCell.h */,
+				6675B51019DD946A00C7E69F /* RDDAddressQRTableViewCell.m */,
 				660F2F1D19A6644100492E7F /* RDDAppDelegate.h */,
 				660F2F1E19A6644100492E7F /* RDDAppDelegate.m */,
 				666A07B119C525ED0092A9FF /* RDDColor.h */,
@@ -146,10 +157,14 @@
 				669B637C19D3BCBC00D16190 /* RDDNewContactViewController.m */,
 				666A07B419C536C10092A9FF /* RDDNewReceivingAddressViewController.h */,
 				666A07B519C536C10092A9FF /* RDDNewReceivingAddressViewController.m */,
-				66C6D93919C50ECA00E75C6C /* RDDQRCodeParser.h */,
-				66C6D93A19C50ECA00E75C6C /* RDDQRCodeParser.m */,
+				6675B51219DD98C400C7E69F /* RDDQRCodeGenerator.h */,
+				6675B51319DD98C400C7E69F /* RDDQRCodeGenerator.m */,
+				66C6D93919C50ECA00E75C6C /* RDDQRCode.h */,
+				66C6D93A19C50ECA00E75C6C /* RDDQRCode.m */,
 				669DD57F19CA72A300DCEAAA /* RDDQTExportParser.h */,
 				669DD58019CA72A300DCEAAA /* RDDQTExportParser.m */,
+				6675B50C19DD090D00C7E69F /* RDDReceiveDetailsViewController.h */,
+				6675B50D19DD090D00C7E69F /* RDDReceiveDetailsViewController.m */,
 				66CF7CFD19AA814300E90DE3 /* RDDReceiveViewController.h */,
 				66CF7CFE19AA814300E90DE3 /* RDDReceiveViewController.m */,
 				669B637519D3B34E00D16190 /* RDDReceivingAddress.h */,
@@ -308,7 +323,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66C6D93B19C50ECA00E75C6C /* RDDQRCodeParser.m in Sources */,
+				66C6D93B19C50ECA00E75C6C /* RDDQRCode.m in Sources */,
 				66B3429619A7E2C400BA3D1E /* RDDDashboardViewController.m in Sources */,
 				666A07B619C536C10092A9FF /* RDDNewReceivingAddressViewController.m in Sources */,
 				669DD57E19CA693900DCEAAA /* RDDTransactionViewController.m in Sources */,
@@ -320,14 +335,17 @@
 				660F2F1F19A6644100492E7F /* RDDAppDelegate.m in Sources */,
 				668CBE6A19D3AF59008D89E7 /* RDDSeedData.m in Sources */,
 				669B637719D3B34E00D16190 /* RDDReceivingAddress.m in Sources */,
+				6675B51119DD946A00C7E69F /* RDDAddressQRTableViewCell.m in Sources */,
 				660F2F1C19A6644100492E7F /* main.m in Sources */,
 				66CF7CFC19AA813100E90DE3 /* RDDSendViewController.m in Sources */,
+				6675B50E19DD090D00C7E69F /* RDDReceiveDetailsViewController.m in Sources */,
 				669B637D19D3BCBC00D16190 /* RDDNewContactViewController.m in Sources */,
 				661DBEE719C0074C003E124C /* RDDStringFormatter.m in Sources */,
 				669DD58119CA72A300DCEAAA /* RDDQTExportParser.m in Sources */,
 				66C6D93419C4FAC700E75C6C /* RDDScanViewController.m in Sources */,
 				666A07B319C525ED0092A9FF /* RDDColor.m in Sources */,
 				66CF7CF919AA80B200E90DE3 /* RDDContactsViewController.m in Sources */,
+				6675B51419DD98C400C7E69F /* RDDQRCodeGenerator.m in Sources */,
 				669B637A19D3B3EC00D16190 /* RDDTransaction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

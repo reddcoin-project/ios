@@ -10,6 +10,7 @@
 
 #import "RDDColor.h"
 #import "RDDReceivingAddress.h"
+#import "RDDReceiveDetailsViewController.h"
 #import "RDDSeedData.h"
 
 @interface RDDReceiveViewController ()
@@ -30,6 +31,17 @@
     self.addresses = [[[RDDSeedData alloc] init] receivingAddresses];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ShowReceiveDetails"]) {
+        RDDReceiveDetailsViewController *vc = (RDDReceiveDetailsViewController *)segue.destinationViewController;
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        RDDReceivingAddress *address = self.addresses[indexPath.row];
+        vc.address = address;
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -40,15 +52,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger row = indexPath.row;
-    NSString *cellIdentifier = @"ReuseIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
-        cell.backgroundColor = [RDDColor backgroundColor];
-    }
-    
     RDDReceivingAddress *address = self.addresses[row];
     
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReceiveCellIdentifier"];
     cell.textLabel.text = address.label;
     cell.detailTextLabel.text = address.address;
     
@@ -57,9 +63,6 @@
 
 #pragma mark - UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {}
 
 @end

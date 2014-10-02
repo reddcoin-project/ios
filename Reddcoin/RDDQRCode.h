@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface RDDQRCodeParser : NSObject
+@class RDDReceivingAddress;
+
+@interface RDDQRCode : NSObject
 + (NSDictionary *)parse:(NSString *)scannedValue;
++ (NSString *)generate:(RDDReceivingAddress *)address;
 @end

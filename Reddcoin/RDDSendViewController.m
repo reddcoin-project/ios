@@ -12,7 +12,7 @@
 #import "RDDContact.h"
 #import "RDDContactsViewController.h"
 #import "RDDElectrumClient.h"
-#import "RDDQRCodeParser.h"
+#import "RDDQRCode.h"
 #import "RDDTransaction.h"
 #import "RDDScanViewController.h"
 #import "RDDSeedData.h"
@@ -247,12 +247,12 @@
     
     [controller dismissViewControllerAnimated:YES completion:NULL];
     
-    NSDictionary *scanned = [RDDQRCodeParser parse:value];
+    NSDictionary *scanned = [RDDQRCode parse:value];
     if (scanned) {
         self.addressTextField.text = scanned[@"address"];
         
-        if (scanned[@"message"]) {
-            self.labelTextField.text = scanned[@"message"];
+        if (scanned[@"label"]) {
+            self.labelTextField.text = scanned[@"label"];
         }
         
         if (scanned[@"amount"]) {
