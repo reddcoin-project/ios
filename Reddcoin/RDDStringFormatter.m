@@ -31,7 +31,7 @@
     NSString *numberAsString = [numberFormatter stringFromNumber:amount];
     
     if (includeCurrencyCode) {
-        numberAsString = [numberAsString stringByAppendingFormat:@" %@", kReddcoinCurrencyCode];
+        numberAsString = [numberAsString stringByAppendingFormat:@" %@", RDDCurrencyCode];
     }
     
     return numberAsString;

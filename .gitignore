@@ -25,3 +25,7 @@ Pods/
 
 # Custom
 Keys.plist
+
+# OpenSSL
+openssl
+openssl-*

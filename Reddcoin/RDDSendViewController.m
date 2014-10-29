@@ -223,7 +223,7 @@
 
 - (void)postSentNotification
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kReddcoinTransactionSuccessfulNotification object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:RDDTransactionSuccessfulNotification object:nil];
 }
 
 #pragma mark - UIAlertViewDelegate

@@ -41,7 +41,7 @@
     
     [nc addObserver:self
            selector:@selector(transactionSuccessfulNotification:)
-               name:kReddcoinTransactionSuccessfulNotification
+               name:RDDTransactionSuccessfulNotification
              object:nil];
 }
 

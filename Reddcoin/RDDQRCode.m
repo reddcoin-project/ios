@@ -23,7 +23,7 @@
     scannedValue = [scannedValue stringByReplacingOccurrencesOfString:@":" withString:@"://"];
     NSURL *url = [NSURL URLWithString:scannedValue];
     
-    if ([[url scheme] isEqualToString:kReddcoinQRCodeScheme]) {
+    if ([[url scheme] isEqualToString:RDDQRCodeScheme]) {
         // Build scanned data dictionary
         NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithDictionary:[url uq_queryDictionary]];
         [dictionary addEntriesFromDictionary:@{@"address" : [url host]}];

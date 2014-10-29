@@ -8,10 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
-@interface RDDConstants : NSObject
-extern NSString * const kReddcoinCurrencyCode;
-extern NSString * const kReddcoinQRCodeScheme;
-extern NSString * const kReddcoinBlockExplorerBaseURL;
+static NSString * const RDDCurrencyCode = @"RDD";
+static NSString * const RDDQRCodeScheme = @"reddcoin";
+static NSString * const RDDBlockExplorerBaseURL = @"http://bitinfocharts.com/reddcoin/tx/";
 
-extern NSString * const kReddcoinTransactionSuccessfulNotification;
+static const NSInteger RDDSeedEntropyLenth = (128/8);
+static NSString * const RDDSecAttrService = @"com.reddcoin.reddcoin";
+
+static NSString * const RDDMnemonicKey = @"mnemonic";
+static NSString * const RDDCreationTimeKey = @"creationtime";
+static NSString * const RDDMasterPubkeyKey = @"masterpubkey";
+static NSString * const RDDPasscodeDetectKey = @"passcodedetect";
+
+static NSString * const RDDTransactionSuccessfulNotification = @"RDDTransactionSuccessfulNotification";
+
+@interface RDDConstants : NSObject
 @end

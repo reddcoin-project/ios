@@ -93,7 +93,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSString *urlString = [kReddcoinBlockExplorerBaseURL stringByAppendingString:self.transaction.transactionID];
+    NSString *urlString = [RDDBlockExplorerBaseURL stringByAppendingString:self.transaction.transactionID];
     NSURL *url = [NSURL URLWithString:urlString];
     [[UIApplication sharedApplication] openURL:url];
 }
